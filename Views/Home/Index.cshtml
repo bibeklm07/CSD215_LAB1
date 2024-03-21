@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <h1 class="display-4">Bibek's Mini Calculator</h1>
+    
+    <div id="calculator">
+        <input type="text" id="Number1" placeholder="First number">
+        <select id="operator">
+            <option value="Add">+</option>
+            <option value="Substract">-</option>
+            <option value="Multiply">*</option>
+            <option value="Divide">/</option>
+        </select>
+        <input type="text" id="Number2" placeholder="Second number">
+        <button onclick="calculate()">Calculate</button>
+        <p id="outcome"></p>
+    </div>
+</div>
+
+<script>
+    function calculate() {
+        var Number1 = parseFloat(document.getElementById("Number1").value);
+        var Number2 = parseFloat(document.getElementById("Number2").value);
+        var operator = document.getElementById("operator").value;
+        var outcome;
+
+        switch (operator) {
+            case "Add":
+                outcome = Number1 + Number2;
+                break;
+            case "Substract":
+                outcome = Number1 - Number2;
+                break;
+            case "Multiply":
+                outcome = Number1 * Number2;
+                break;
+            case "Divide":
+                if (Number2 === 0) {
+                    alert("Error: Infinite value due to 0 in denominator ");
+                    return;
+                }
+                outcome = Number1 / Number2;
+                break;
+            default:
+                alert("Invalid operator");
+                return;
+        }
+
+        document.getElementById("outcome").textContent = "Outcome: " + outcome;
+    }
+</script>
+
+
